@@ -1,0 +1,99 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>{{.Farewell}}</title>
+
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Nunito:ital,wght@0,200..1000;1,200..1000&display=swap"
+        rel="stylesheet">
+
+    <style>
+        :root {
+            --primary-color: #024c5e;
+            --secondary-color: #0c5f73;
+            --tertiary-color: #207488;
+
+            --text-color: hsl(0, 0%, 10%);
+            --background-color: hsl(0, 10%, 98%);
+
+            font-family: "Nunito", sans-serif;
+            font-optical-sizing: auto;
+            font-weight: 600;
+            font-style: normal;
+        }
+
+        body {
+            color: var(--text-color);
+            background-color: var(--background-color);
+            margin: auto;
+            max-width: 700px;
+            padding: 0 1em;
+            text-align: center;
+            display: flex;
+            flex-flow: column nowrap;
+            justify-content: center;
+            min-height: 100vh;
+        }
+
+        input,
+        div,
+        select,
+        textarea,
+        optgroup,
+        option {
+            font-family: inherit;
+            font-size: inherit;
+            font-style: inherit;
+            font-weight: inherit;
+        }
+
+        .affirmation {
+            background-color: var(--secondary-color);
+            color: var(--background-color);
+            border: none;
+            border-radius: 2em;
+            padding: 1em;
+            margin: 0.5em 0;
+            font-size: x-large;
+        }
+
+        .affirmation:hover {
+            background-color: var(--tertiary-color);
+        }
+
+        h1,
+        h2,
+        h3,
+        h4,
+        h5,
+        h6 {
+            margin: 1em 0;
+            padding: 0 4pt;
+            color: var(--primary-color);
+        }
+    </style>
+</head>
+
+<body>
+    <h1>
+        {{ .Greeting }}
+    </h1>
+    <div class="affirmation">
+        {{index .Affirmations 0}}
+    </div>
+    <div class="affirmation">
+        {{index .Affirmations 1}}
+    </div>
+    <div class="affirmation">
+        {{index .Affirmations 2}}
+    </div>
+    <h1>
+        {{ .Farewell }}
+    </h1>
+</body>
+
+</html>
