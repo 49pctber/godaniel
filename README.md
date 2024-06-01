@@ -12,18 +12,17 @@ I have updated this project to include any name so that everyone can get some âœ
 ## Installation
 
 ```
-go install github.com/49pctber/godaniel/cmd/...@latest
+go install github.com/49pctber/godaniel@latest
 ```
 
-This will install two executables: `godaniel` and `godaniel_server`.
+This will install the `godaniel` executable.
 `godaniel` is a CLI application that will print your affirmations in the console.
-`godaniel_server` starts a server to create a prettier interface that can be viewed in a broswer.
 
 The default name is Daniel, but you can specify any name using `--name` flag.
 Note that different names will result in different daily affirmations.
 (i.e. Bryan will likely have different affirmations than Daniel even on the same day.)
 
-For the server, you can specify a different port for the server using the `--port` flag.
+For more information, run `godaniel --help`.
 
 ## Example Output
 

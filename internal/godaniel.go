@@ -2,7 +2,6 @@ package godaniel
 
 import (
 	_ "embed"
-	"flag"
 	"fmt"
 	"html/template"
 	"net/http"
@@ -13,8 +12,7 @@ import (
 	"golang.org/x/text/language"
 )
 
-var DefaultName string
-var Port int
+var DefaultName string = "Daniel"
 
 type TemplateData struct {
 	Name         string
@@ -22,12 +20,6 @@ type TemplateData struct {
 	Affirmations []string
 	Now          time.Time
 	Farewell     string
-}
-
-func init() {
-	flag.StringVar(&DefaultName, "name", "Daniel", "the name of the person to affirm")
-	flag.IntVar(&Port, "port", 8052, "port number to use for the server")
-	flag.Parse()
 }
 
 //go:embed static/index.html
@@ -62,7 +54,8 @@ func (td *TemplateData) getFarewell() {
 }
 
 func GetTemplateData(name string) TemplateData {
-	// get current time
+	caser := cases.Title(language.English)
+	name = caser.String(name)
 	td := TemplateData{}
 	td.UpdateData(name)
 	return td
@@ -83,8 +76,6 @@ func Handler(w http.ResponseWriter, req *http.Request) {
 
 	var td TemplateData
 	rname := req.URL.Query().Get("name")
-	caser := cases.Title(language.English)
-	rname = caser.String(rname)
 
 	if len(rname) != 0 {
 		td = GetTemplateData(rname)
