@@ -4,7 +4,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>{{.Farewell}}</title>
+    <title>{{ template "title" . }}</title>
 
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
@@ -75,25 +75,26 @@
             padding: 0 4pt;
             color: var(--primary-color);
         }
+
+        #nameinput {
+            padding: 1em;
+            border-radius: 1em;
+            min-width: 70%;
+            font-size: larger;
+            text-align: center;
+            box-sizing: border-box;
+        }
+
+        button {
+            padding: 1em;
+            border-radius: 1em;
+            font: inherit;
+        }
     </style>
 </head>
 
 <body>
-    <h1>
-        {{ .Greeting }}
-    </h1>
-    <div class="affirmation">
-        {{index .Affirmations 0}}
-    </div>
-    <div class="affirmation">
-        {{index .Affirmations 1}}
-    </div>
-    <div class="affirmation">
-        {{index .Affirmations 2}}
-    </div>
-    <h1>
-        {{ .Farewell }}
-    </h1>
+    {{ template "body" . }}
 </body>
 
 </html>

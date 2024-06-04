@@ -1,10 +1,12 @@
 package godaniel
 
 import (
+	"embed"
 	_ "embed"
 	"fmt"
 	"html/template"
 	"net/http"
+	"regexp"
 	"strings"
 	"time"
 
@@ -22,8 +24,8 @@ type TemplateData struct {
 	Farewell     string
 }
 
-//go:embed static/index.html
-var templatestr string
+//go:embed static/*.html
+var templates embed.FS
 
 func (td *TemplateData) UpdateData(name string) {
 	td.Name = name
@@ -72,22 +74,32 @@ func PrintAffirmations(td TemplateData) {
 	time.Sleep(2 * time.Second)
 }
 
-func Handler(w http.ResponseWriter, req *http.Request) {
+var re *regexp.Regexp = regexp.MustCompile(`[^a-zA-Z]+`)
+
+func removeNonLetters(input string) string {
+	return re.ReplaceAllString(input, "")
+}
+
+func GoDanielHandler(w http.ResponseWriter, req *http.Request) {
 
 	var td TemplateData
-	rname := req.URL.Query().Get("name")
+	rname := removeNonLetters(req.URL.Query().Get("name"))
 
 	if len(rname) != 0 {
+		// render template for name
 		td = GetTemplateData(rname)
+		tmpl, err := template.ParseFS(templates, "static/base.html", "static/godaniel.html")
+		if err != nil {
+			panic(err)
+		}
+		tmpl.Execute(w, td)
 	} else {
-		td = GetTemplateData(DefaultName)
+		// get name
+		tmpl, err := template.ParseFS(templates, "static/base.html", "static/getname.html")
+		if err != nil {
+			panic(err)
+		}
+		tmpl.Execute(w, nil)
 	}
 
-	// render template data
-	tmpl, err := template.New("template").Parse(templatestr)
-	if err != nil {
-		panic(err)
-	}
-
-	tmpl.Execute(w, td)
 }

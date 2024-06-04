@@ -1,0 +1,19 @@
+{{ define "title" }}{{ .Farewell }}{{ end }}
+
+{{ define "body"}}
+<h1>
+    {{ .Greeting }}
+</h1>
+<div class="affirmation">
+    {{index .Affirmations 0}}
+</div>
+<div class="affirmation">
+    {{index .Affirmations 1}}
+</div>
+<div class="affirmation">
+    {{index .Affirmations 2}}
+</div>
+<h1>
+    {{ .Farewell }}
+</h1>
+{{ end }}

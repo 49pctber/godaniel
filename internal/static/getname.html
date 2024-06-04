@@ -1,0 +1,38 @@
+{{ define "title" }}🎉 GO, YOU! 🎉{{ end }}
+
+{{ define "body"}}
+<script>
+    function go() {
+        window.location.replace("?name=" + document.getElementById("nameinput").value.replace(/[^a-zA-Z]+/g, ''));
+    };
+
+    window.onload = function () {
+        var x = document.getElementById("nameinput");
+        x.addEventListener("keydown", function (e) {
+            console.log(e.key);
+            if (e.key === "Enter") {  //checks whether the pressed key is "Enter"
+                go();
+            }
+        });
+    };
+</script>
+<h1>
+    🎉 GO, YOU! 🎉
+</h1>
+<h2>
+    You're incredible.
+</h2>
+<p>
+    Has anyone told you that today? <br>
+    Because you are.
+</p>
+<p>
+    Get your personalized daily affirmations by entering your first name below:
+</p>
+<p>
+    <input type="text" name="nameinput" id="nameinput" placeholder="Daniel">
+</p>
+<p>
+    <button onclick="javascript:go()">🎉 GO, YOU! 🎉</button>
+</p>
+{{ end }}
