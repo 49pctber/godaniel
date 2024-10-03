@@ -3,7 +3,7 @@
 {{ define "body"}}
 <script>
     function go() {
-        window.location.replace("?name=" + document.getElementById("nameinput").value.replace(/[^a-zA-Z]+/g, ''));
+        window.location.replace(document.getElementById("nameinput").value.replace(/[^a-zA-Z]+/g, ''));
     };
 
     window.onload = function () {

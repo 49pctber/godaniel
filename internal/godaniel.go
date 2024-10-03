@@ -2,7 +2,6 @@ package godaniel
 
 import (
 	"embed"
-	_ "embed"
 	"fmt"
 	"html/template"
 	"net/http"
@@ -25,7 +24,7 @@ type TemplateData struct {
 }
 
 //go:embed static/*.html
-var templates embed.FS
+var Templates embed.FS
 
 func (td *TemplateData) UpdateData(name string) {
 	td.Name = name
@@ -76,26 +75,26 @@ func PrintAffirmations(td TemplateData) {
 
 var re *regexp.Regexp = regexp.MustCompile(`[^a-zA-Z]+`)
 
-func removeNonLetters(input string) string {
+func RemoveNonLetters(input string) string {
 	return re.ReplaceAllString(input, "")
 }
 
 func GoDanielHandler(w http.ResponseWriter, req *http.Request) {
 
 	var td TemplateData
-	rname := removeNonLetters(req.URL.Query().Get("name"))
+	rname := RemoveNonLetters(req.URL.Query().Get("name"))
 
 	if len(rname) != 0 {
 		// render template for name
 		td = GetTemplateData(rname)
-		tmpl, err := template.ParseFS(templates, "static/base.html", "static/godaniel.html")
+		tmpl, err := template.ParseFS(Templates, "static/base.html", "static/godaniel.html")
 		if err != nil {
 			panic(err)
 		}
 		tmpl.Execute(w, td)
 	} else {
 		// get name
-		tmpl, err := template.ParseFS(templates, "static/base.html", "static/getname.html")
+		tmpl, err := template.ParseFS(Templates, "static/base.html", "static/getname.html")
 		if err != nil {
 			panic(err)
 		}
