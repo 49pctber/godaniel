@@ -14,9 +14,12 @@ var affirmations []string
 
 func init() {
 	affirmations = strings.Split(list, "\n")
+	for i := range affirmations {
+		affirmations[i] = strings.TrimSpace(affirmations[i])
+	}
 }
 
-func (td *TemplateData) getAffirmations() {
+func (td *TemplateData) updateAffirmations() {
 	todays_affirmations := make([]string, 3)
 	existing_keywords := make(map[string]interface{}, 0)
 	h := fnv.New32a()

@@ -33,12 +33,12 @@ func (td *TemplateData) UpdateData(name string) {
 		panic(err)
 	}
 	td.Now = time.Now().In(loc)
-	td.getGreeting()
-	td.getAffirmations()
-	td.getFarewell()
+	td.updateGreeting()
+	td.updateAffirmations()
+	td.updateFarewell()
 }
 
-func (td *TemplateData) getGreeting() {
+func (td *TemplateData) updateGreeting() {
 	if td.Now.Hour() < 5 {
 		td.Greeting = fmt.Sprintf("😴 Bro, why are you awake? Go to bed, %s...", td.Name)
 	} else if td.Now.Hour() < 12 {
@@ -50,8 +50,12 @@ func (td *TemplateData) getGreeting() {
 	}
 }
 
-func (td *TemplateData) getFarewell() {
+func (td *TemplateData) updateFarewell() {
 	td.Farewell = fmt.Sprintf("🎉 GO, %s! 🎉", strings.ToUpper(td.Name))
+}
+
+func (td TemplateData) String() string {
+	return fmt.Sprintf("%s %s %s", td.Greeting, strings.Join(td.Affirmations, " "), td.Farewell)
 }
 
 func GetTemplateData(name string) TemplateData {
