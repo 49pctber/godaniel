@@ -55,7 +55,7 @@ func (td *TemplateData) updateFarewell() {
 }
 
 func (td TemplateData) String() string {
-	return fmt.Sprintf("%s %s %s", td.Greeting, strings.Join(td.Affirmations, " "), td.Farewell)
+	return fmt.Sprintf("%s\n\n%s\n\n%s", td.Greeting, strings.Join(td.Affirmations, "\n"), td.Farewell)
 }
 
 func GetTemplateData(name string) TemplateData {
