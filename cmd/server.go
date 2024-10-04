@@ -20,7 +20,7 @@ var serverCmd = &cobra.Command{
 	Long: `Start a server on localhost.
 By default, the server runs on localhost:8052, but you may specify a port using --port.`,
 	Run: func(cmd *cobra.Command, args []string) {
-		http.HandleFunc("GET /", godaniel.GoDanielHandler)
+		http.HandleFunc("GET /{$}", godaniel.GoDanielHandler)
 
 		http.HandleFunc("GET /{name}", func(w http.ResponseWriter, r *http.Request) {
 			var td godaniel.TemplateData
