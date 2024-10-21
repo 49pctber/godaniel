@@ -72,6 +72,20 @@ By default, the server runs on localhost:8052, but you may specify a port using 
 			w.Write([]byte(td.String()))
 		})
 
+		http.HandleFunc("GET /html/{name}", func(w http.ResponseWriter, r *http.Request) {
+			var td godaniel.TemplateData
+			rname := godaniel.RemoveNonLetters(r.PathValue("name"))
+
+			if len(rname) != 0 {
+				td = godaniel.GetTemplateData(rname)
+			} else {
+				td = godaniel.GetTemplateData(godaniel.DefaultName)
+			}
+
+			w.Header().Set("Content-Type", "text/html; charset=utf-8")
+			w.Write([]byte(td.HTML()))
+		})
+
 		name, err := cmd.Flags().GetString("name")
 		if err != nil {
 			panic(err)

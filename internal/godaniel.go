@@ -58,6 +58,15 @@ func (td TemplateData) String() string {
 	return fmt.Sprintf("%s\n\n%s\n\n%s", td.Greeting, strings.Join(td.Affirmations, "\n"), td.Farewell)
 }
 
+func (td TemplateData) HTML() string {
+	list := ""
+	for _, a := range td.Affirmations {
+		list += strings.Join([]string{"<li>", a, "</li>"}, "\n")
+	}
+	list = strings.Join([]string{"<ul>", list, "</ul>"}, "\n")
+	return fmt.Sprintf("<h1>%s</h1><p>%s<p><h2>%s</h2>", td.Greeting, list, td.Farewell)
+}
+
 func GetTemplateData(name string) TemplateData {
 	caser := cases.Title(language.English)
 	name = caser.String(name)
