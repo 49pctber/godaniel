@@ -10,91 +10,60 @@
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Nunito:ital,wght@0,200..1000;1,200..1000&display=swap"
         rel="stylesheet">
+    <link rel="stylesheet" href="https://bryanredd.com/css/style.css">
 
     <style>
-        :root {
-            --primary-color: #024c5e;
-            --secondary-color: #0c5f73;
-            --tertiary-color: #207488;
-
-            --text-color: hsl(0, 0%, 10%);
-            --background-color: hsl(0, 10%, 98%);
-
-            font-family: "Nunito", sans-serif;
-            font-optical-sizing: auto;
-            font-weight: 600;
-            font-style: normal;
-        }
-
-        body {
-            color: var(--text-color);
-            background-color: var(--background-color);
-            margin: auto;
-            max-width: 700px;
-            padding: 0 1em;
-            text-align: center;
-            display: flex;
-            flex-flow: column nowrap;
-            justify-content: center;
-            min-height: 100vh;
-        }
-
-        input,
-        div,
-        select,
-        textarea,
-        optgroup,
-        option {
-            font-family: inherit;
-            font-size: inherit;
-            font-style: inherit;
-            font-weight: inherit;
-        }
-
-        .affirmation {
-            background-color: var(--secondary-color);
-            color: var(--background-color);
-            border: none;
-            border-radius: 2em;
+        .affirmation,
+        button,
+        input {
+            margin: 1em;
             padding: 1em;
-            margin: 0.5em 0;
-            font-size: x-large;
-        }
-
-        .affirmation:hover {
-            background-color: var(--tertiary-color);
-        }
-
-        h1,
-        h2,
-        h3,
-        h4,
-        h5,
-        h6 {
-            margin: 1em 0;
-            padding: 0 4pt;
-            color: var(--primary-color);
-        }
-
-        #nameinput {
-            padding: 1em;
-            border-radius: 1em;
-            min-width: 70%;
-            font-size: larger;
-            text-align: center;
-            box-sizing: border-box;
-        }
-
-        button {
-            padding: 1em;
-            border-radius: 1em;
-            font: inherit;
+            background: #fff2;
+            border-radius: 0.5em;
         }
     </style>
+
 </head>
 
 <body>
-    {{ template "body" . }}
+    <header>
+        <svg width="6em" height="2em" viewBox="0 0 31.997507 10.353151" version="1.1" id="svg5"
+            xmlns="http://www.w3.org/2000/svg" xmlns:svg="http://www.w3.org/2000/svg">
+            <defs id="defs2" />
+            <g id="layer1" transform="translate(-1.0458703,-0.87275413)">
+                <g id="g378" transform="translate(-12.486443,-8.9927144)">
+                    <rect style="stroke-width:0.264583" class="svg-shape" id="rect111" width="10" height="10"
+                        x="13.532313" y="9.8702478" rx="1" ry="1" />
+                    <circle style="stroke-width:0.273167" class="svg-shape" id="path273" cx="29.524296" cy="15.027691"
+                        r="5.1622224" />
+                    <path style="stroke-width:0.264583" class="svg-shape" id="path329"
+                        d="m 46.599813,13.553097 c -0.552068,0.95621 -10.489301,0.95621 -11.04137,0 -0.552069,-0.956211 4.416548,-9.5621078 5.520685,-9.5621078 1.104137,0 6.072754,8.6058968 5.520685,9.5621078 z"
+                        transform="translate(-1.1126528,5.9483644)" />
+                </g>
+            </g>
+        </svg>
+
+    </header>
+    <main>
+        {{ template "body" . }}
+    </main>
+    <footer>
+        <svg width="3em" height="1em" viewBox="0 0 31.997507 10.353151" version="1.1" id="svg5"
+            xmlns="http://www.w3.org/2000/svg" xmlns:svg="http://www.w3.org/2000/svg">
+            <defs id="defs2" />
+            <g id="layer1" transform="translate(-1.0458703,-0.87275413)">
+                <g id="g378" transform="translate(-12.486443,-8.9927144)">
+                    <rect style="stroke-width:0.264583" class="svg-shape" id="rect111" width="10" height="10"
+                        x="13.532313" y="9.8702478" rx="1" ry="1" />
+                    <circle style="stroke-width:0.273167" class="svg-shape" id="path273" cx="29.524296" cy="15.027691"
+                        r="5.1622224" />
+                    <path style="stroke-width:0.264583" class="svg-shape" id="path329"
+                        d="m 46.599813,13.553097 c -0.552068,0.95621 -10.489301,0.95621 -11.04137,0 -0.552069,-0.956211 4.416548,-9.5621078 5.520685,-9.5621078 1.104137,0 6.072754,8.6058968 5.520685,9.5621078 z"
+                        transform="translate(-1.1126528,5.9483644)" />
+                </g>
+            </g>
+        </svg>
+    </footer>
 </body>
 
 </html>
